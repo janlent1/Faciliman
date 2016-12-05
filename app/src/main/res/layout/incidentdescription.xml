@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright (C) 2012 The Android Open Source Project
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/location_information"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:textSize="18sp"
+        android:text="In welchem Gebäude befindet sich der Schaden?"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/facilities_spinner"
+        android:layout_below="@+id/location_information"
+        android:layout_alignParentLeft="true" />
+
+    <TextView
+        android:id="@+id/detailed_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:textSize="18sp"
+        android:text="Bitte beschreiben Sie ausführlich, wo sich das Problem im bereits angegebenen Gebäude befindet:"
+        android:layout_below="@+id/facilities_spinner"
+        android:layout_alignParentLeft="true" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:id="@+id/detailed_location_description"
+        android:text="Hier Position näher beschreiben"
+        android:layout_below="@+id/detailed_description"
+        android:layout_alignParentLeft="true" />
+
+    <TextView
+        android:id="@+id/damage_description_information"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:textSize="18sp"
+        android:text="Nun beschreiben Sie bitte ausführlich, worum es sich bei dem Problem handelt:"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:id="@+id/damage_description"
+        android:text="Hier Problem beschreiben"
+        android:layout_alignTop="@+id/damage_description_information"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="62dp" />
+
+    <Button
+        android:text="Senden"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="41dp"
+        android:id="@+id/descr_finished_button" />
+
+</RelativeLayout>

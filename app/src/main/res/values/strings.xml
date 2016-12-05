@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Faciliman</string>
+    <string name="action_settings">Settings</string>
+    <string-array name="facilities">
+        <item>Gebäude A</item>
+        <item>Gebäude B</item>
+        <item>Gebäude C</item>
+        <item>Turmstrasse</item>
+        <item>Ostasieninstitut(OAI)</item>
+        <item>Sozialwissenschaften</item>
+    </string-array>
+</resources>
