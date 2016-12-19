@@ -27,6 +27,8 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.example.d062654.faciliman.Requests.IncidentRequest;
+
 public class _2_IncidentSelection extends Fragment implements View.OnClickListener{
     RelativeLayout ll = null;
     FragmentActivity fragact = null;
@@ -60,6 +62,7 @@ public class _2_IncidentSelection extends Fragment implements View.OnClickListen
 
     @Override
     public void onClick(View v) {
+
         Toast.makeText(this.ll.getContext(), "Das ist das dritte Fragment", Toast.LENGTH_SHORT).show();
         Toast.makeText(this.ll.getContext(), v.getResources().getResourceName(v.getId()), Toast.LENGTH_SHORT).show();
         FragmentTransaction transaction = fragact.getSupportFragmentManager().beginTransaction();

@@ -9,6 +9,9 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.d062654.faciliman.Connection.ApiInterface;
+import com.example.d062654.faciliman.Connection.Connection;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -39,7 +42,8 @@ public class MainActivity extends AppCompatActivity {
             if (savedInstanceState != null) {
                 return;
             }
-
+            ApiInterface apiService =
+                    Connection.getClient().create(ApiInterface.class);
             // Create an instance of ExampleFragment
             _0_startScreen _0_startScreen = new _0_startScreen();
 

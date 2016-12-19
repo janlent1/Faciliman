@@ -6,20 +6,30 @@
     android:layout_height="match_parent">
 
     <Button
-        android:text="Schaden melden"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="132dp"
-        android:id="@+id/button"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
-    <Button
         android:text="Facility Management"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/facmanbutton"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="139dp" />
+
+    <Button
+        android:text="Schaden melden"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:id="@+id/hs_lu_"
+        android:layout_width="match_parent"
+        android:layout_height="400px"
+        android:src="@mipmap/hslu"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="35dp" />
 
 </RelativeLayout>

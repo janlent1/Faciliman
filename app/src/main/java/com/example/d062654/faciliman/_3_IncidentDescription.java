@@ -30,12 +30,21 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.d062654.faciliman.Connection.Connection;
+import com.example.d062654.faciliman.Requests.IncidentRequest;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class _3_IncidentDescription extends Fragment implements View.OnClickListener{
     RelativeLayout ll = null;
     FragmentActivity fragact = null;
     Button sendbutton = null;
     TextView locdescrp, damagdescrinfo = null;
-
+    Spinner spinner = null;
+    String user = null;
     @Override
     public void onAttach(Activity activity) {
         fragact = (FragmentActivity)activity;
@@ -52,7 +61,7 @@ public class _3_IncidentDescription extends Fragment implements View.OnClickList
         locdescrp.setOnClickListener(this);
         damagdescrinfo = ((TextView)ll.findViewById(R.id.damage_description_information));
         damagdescrinfo.setOnClickListener(this);
-        Spinner spinner = ((Spinner)ll.findViewById(R.id.facilities_spinner));
+        spinner = ((Spinner)ll.findViewById(R.id.facilities_spinner));
         //spinner.setOnClickListener(this);
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(ll.getContext(), R.array.facilities, android.R.layout.simple_spinner_item);
@@ -80,19 +89,48 @@ public class _3_IncidentDescription extends Fragment implements View.OnClickList
         Toast.makeText(this.ll.getContext(), "Das ist das 4. Fragment", Toast.LENGTH_SHORT).show();
 
         if(v.getResources().getResourceName(v.getId()).substring(30).contentEquals("id/descr_finished_button")){
-            Toast.makeText(this.ll.getContext(), v.getResources().getResourceName(v.getId()), Toast.LENGTH_SHORT).show();
+            IncidentRequest incident = new IncidentRequest(user, spinner.getSelectedItem().toString(), locdescrp.getText().toString(), damagdescrinfo.getText().toString());
+            Call<ResponseBody> call = Connection.getApiInterface().sendIncident(user, incident);
+            call.enqueue(new Callback<ResponseBody>() {
+                             @Override
+                             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                                 if (response.isSuccessful()) {
+                                     // Do awesome stuff
+                                     FragmentTransaction transaction = fragact.getSupportFragmentManager().beginTransaction();
+                                     _3b_IncidentPicture newFragment = new _3b_IncidentPicture();
+                                     newFragment.user = user;
+                                     // Replace whatever is in the fragment_container view with this fragment,
+                                     // and add the transaction to the back stack so the user can navigate back
+                                     transaction.replace(R.id.fragment_container, newFragment);
+                                     transaction.addToBackStack(null);
+
+                                     // Commit the transaction
+                                     transaction.commit();
+                                 } else if (response.code() == 401) {
+                                     // Handle unauthorized
+                                     Toast.makeText(fragact.getApplicationContext(),
+                                             "Sorry! Failed to capture image", Toast.LENGTH_SHORT)
+                                             .show();
+                                 } else {
+                                     // Handle other responses
+                                     Toast.makeText(fragact.getApplicationContext(),
+                                             "Sorry! Failed to capture image", Toast.LENGTH_SHORT)
+                                             .show();
+
+                                 }
+                             }
+
+                             @Override
+                             public void onFailure(Call<ResponseBody> call, Throwable t) {
+                                 Toast.makeText(fragact.getApplicationContext(),
+                                         "Sorry! Failed to capture image", Toast.LENGTH_SHORT)
+                                         .show();
+                             }
+                         });
+                Toast.makeText(this.ll.getContext(), v.getResources().getResourceName(v.getId()), Toast.LENGTH_SHORT).show();
             Toast.makeText(this.ll.getContext(), locdescrp.getText()    , Toast.LENGTH_SHORT).show();
 
-            FragmentTransaction transaction = fragact.getSupportFragmentManager().beginTransaction();
-            _4_FinalScreen newFragment = new _4_FinalScreen();
-
-            // Replace whatever is in the fragment_container view with this fragment,
-            // and add the transaction to the back stack so the user can navigate back
-            transaction.replace(R.id.fragment_container, newFragment);
-            transaction.addToBackStack(null);
-
-            // Commit the transaction
-            transaction.commit();
+            ;
         }else if(v.getResources().getResourceName(v.getId()).substring(30).contentEquals("id/detailed_location_description")){
             // TODO: 11/15/2016
         }

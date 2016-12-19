@@ -14,6 +14,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 -->
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/content_main"
@@ -21,50 +22,37 @@ limitations under the License.
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/selectdamageview"
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="16dp"
         android:textSize="18sp"
-        android:text="Bitte Schaden auswählen"
+        android:text="Bitte laden Sie noch ein Bild hoch"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="54dp" />
-
-    <Button
-        android:text="Sonstiges"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/othersbutton"
-        android:layout_below="@+id/missingequipmentbutton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="22dp" />
-
-    <Button
-        android:text="Schaden"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/damagebutton"
-        android:layout_below="@+id/selectdamageview"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="27dp" />
-
-    <Button
-        android:text="Verunreinigung"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/pollutionbutton"
-        android:layout_alignTop="@+id/damagebutton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="64dp" />
-
-    <Button
-        android:text="Fehlendes Zubehör"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/missingequipmentbutton"
-        android:layout_marginTop="19dp"
-        android:layout_below="@+id/pollutionbutton"
         android:layout_centerHorizontal="true" />
+    <ImageView
+        android:id="@+id/Imageprev"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_below="@+id/title"
+        />
+
+    <Button
+        android:text="Senden"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/send_button"
+        android:layout_toRightOf="@+id/select_pic"
+        android:layout_toEndOf="@+id/select_pic"
+        android:layout_below="@+id/Imageprev" />
+
+    <Button
+        android:text="Bild Auswählen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/select_pic"
+        android:layout_below="@+id/Imageprev"
+        android:layout_alignLeft="@+id/title"
+        android:layout_alignStart="@+id/title" />
 
 </RelativeLayout>

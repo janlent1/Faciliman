@@ -20,16 +20,14 @@ limitations under the License.
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <EditText
+    <Button
+        android:text="Login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:layout_marginTop="47dp"
-        android:id="@+id/editText2"
-        android:text="Matrikelnr."
-        android:layout_below="@+id/logintext"
-        android:layout_alignLeft="@+id/editText" />
+        android:layout_marginBottom="47dp"
+        android:id="@+id/matloginbutton"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -37,39 +35,41 @@ limitations under the License.
         android:inputType="textPassword"
         android:text="Passwort"
         android:ems="10"
-        android:id="@+id/editText"
-        android:layout_marginTop="41dp"
-        android:layout_below="@+id/editText2"
+        android:id="@+id/matpassword"
+        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 
-    <Button
-        android:text="Login"
+    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="47dp"
-        android:id="@+id/loginbutton"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
-
-    <Button
-        android:text="Als Gast fortfahren"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/guestbutton"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="22dp" />
+        android:inputType="text"
+        android:ems="10"
+        android:id="@+id/matnr"
+        android:text="Matrikelnr."
+        android:layout_above="@+id/matpassword"
+        android:layout_alignLeft="@+id/matpassword"
+        android:layout_alignStart="@+id/matpassword" />
 
     <TextView
-        android:id="@+id/logintext"
+        android:id="@+id/location_information"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="16dp"
         android:textSize="18sp"
-        android:text="Oder anmelden"
-        android:layout_marginTop="42dp"
-        android:layout_below="@+id/guestbutton"
-        android:layout_centerHorizontal="true" />
+        android:text="Bitte Login-Daten eingeben:"
+        android:layout_above="@+id/matnr"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="48dp" />
+
+    <ProgressBar
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/incidentlogprogressBar"
+
+        />
 
 
 </RelativeLayout>
