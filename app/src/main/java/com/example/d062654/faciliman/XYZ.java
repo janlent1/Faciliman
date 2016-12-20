@@ -29,7 +29,7 @@ import android.widget.Toast;
 
 import com.example.d062654.faciliman.Requests.IncidentRequest;
 
-public class _2_IncidentSelection extends Fragment implements View.OnClickListener{
+public class XYZ extends Fragment implements View.OnClickListener{
     RelativeLayout ll = null;
     FragmentActivity fragact = null;
     @Override

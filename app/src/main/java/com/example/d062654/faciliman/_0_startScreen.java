@@ -78,7 +78,7 @@ public class _0_startScreen extends Fragment implements View.OnClickListener {
         else if(v.getResources().getResourceName(v.getId()).substring(30).contentEquals("id/facmanbutton")){
             // TODO: 11/15/2016 implement buttonclickhandler
             FragmentTransaction transaction = fragact.getSupportFragmentManager().beginTransaction();
-            _1b_FacilityLogin newFragment = new _1b_FacilityLogin();
+            _1f_FacilityLogin newFragment = new _1f_FacilityLogin();
 
             // Replace whatever is in the fragment_container view with this fragment,
             // and add the transaction to the back stack so the user can navigate back

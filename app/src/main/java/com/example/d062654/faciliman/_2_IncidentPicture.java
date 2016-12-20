@@ -74,7 +74,7 @@ import static android.provider.MediaStore.Images.Thumbnails.EXTERNAL_CONTENT_URI
 import static com.example.d062654.faciliman.R.attr.height;
 
 
-public class _3b_IncidentPicture extends Fragment implements View.OnClickListener{
+public class _2_IncidentPicture extends Fragment implements View.OnClickListener{
     RelativeLayout ll = null;
     FragmentActivity fragact = null;
     private static final int CAMERA_CAPTURE_IMAGE_REQUEST_CODE = 100;
@@ -97,14 +97,14 @@ public class _3b_IncidentPicture extends Fragment implements View.OnClickListene
     static final int REQUEST_IMAGE_CAPTURE = 1;
     File photoFile = null;
     public String user = null;
-
+    String imageFileName = null;
     private File createImageFile() throws IOException {
         // Create an image file name
         String timeStamp = null;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
             timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         }
-        String imageFileName = "JPEG_" + timeStamp + "_";
+        imageFileName = "JPEG_" + timeStamp + "_";
         File storageDir = ll.getContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES);
         File image = File.createTempFile(
                 imageFileName,  /* prefix */
@@ -114,6 +114,7 @@ public class _3b_IncidentPicture extends Fragment implements View.OnClickListene
 
         // Save a file: path for use with ACTION_VIEW intents
         mCurrentPhotoPath = image.getAbsolutePath();
+
         return image;
     }
     @Override
@@ -384,7 +385,9 @@ public class _3b_IncidentPicture extends Fragment implements View.OnClickListene
             uploadPhoto();
 
             FragmentTransaction transaction = fragact.getSupportFragmentManager().beginTransaction();
-            _4_FinalScreen newFragment = new _4_FinalScreen();
+            _3_IncidentDescription newFragment = new _3_IncidentDescription();
+            newFragment.user = user;
+            newFragment.imageFileName= imageFileName;
 
             // Replace whatever is in the fragment_container view with this fragment,
             // and add the transaction to the back stack so the user can navigate back

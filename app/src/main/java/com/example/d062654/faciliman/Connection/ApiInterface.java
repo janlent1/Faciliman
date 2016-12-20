@@ -3,8 +3,11 @@ package com.example.d062654.faciliman.Connection;
 /**
  * Created by D062654 on 14.12.2016.
  */
+import com.example.d062654.faciliman.Requests.IncidentColl;
 import com.example.d062654.faciliman.Requests.IncidentRequest;
 import com.example.d062654.faciliman.Requests.LoginRequest;
+
+import java.util.List;
 
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -27,6 +30,9 @@ public interface ApiInterface {
 
     @GET("/login/{username}/{password}")
     Call<ResponseBody> getLogin(@Path("username") String username, @Path("password") String password);
+
+    @GET("/incident/{username}/all")
+    Call<List<IncidentRequest>> getIncidents(@Path("username") String username);
 
     @POST("incident/{username}")
     Call<ResponseBody> sendIncident(@Path("username") String username, @Body IncidentRequest input);

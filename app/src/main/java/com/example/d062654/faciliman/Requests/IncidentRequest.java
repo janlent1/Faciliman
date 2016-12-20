@@ -11,24 +11,67 @@ public class IncidentRequest {
     private String user;
     @SerializedName("location")
     private String location;
-
+    @SerializedName("titel")
+    private String title;
     @SerializedName("exactLocation")
     private String exactLocation;
     @SerializedName("description")
     private String description;
+
+
+
     @SerializedName("imagePath")
-    private String imagePath = "dummy";
-    public IncidentRequest(String user, String location, String exactLocation, String description) {
+    private String imagePath;
+    @SerializedName("active")
+    private boolean active;
+    @SerializedName("id")
+    private int id;
+
+    public IncidentRequest(String title, String user, String description, String exactLocation, String location, String imagePath) {
+        this.imagePath = imagePath;
+        this.description = description;
+        this.exactLocation = exactLocation;
+        this.title = title;
+        this.location = location;
+        this.user = user;
+    }
+
+    public IncidentRequest(String user, String location, String exactLocation, String description, String imagePath, boolean active) {
         this.user = user;
         this.location = location;
         this.exactLocation = exactLocation;
         this.description = description;
+        this.imagePath = imagePath;
+        this.active = active;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
 
     }
 
     public IncidentRequest() {
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
     public String getUser() {
         return user;
     }

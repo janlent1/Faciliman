@@ -25,6 +25,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -43,8 +44,10 @@ public class _3_IncidentDescription extends Fragment implements View.OnClickList
     FragmentActivity fragact = null;
     Button sendbutton = null;
     TextView locdescrp, damagdescrinfo = null;
+    EditText title = null;
     Spinner spinner = null;
     String user = null;
+    String imageFileName = null;
     @Override
     public void onAttach(Activity activity) {
         fragact = (FragmentActivity)activity;
@@ -62,6 +65,7 @@ public class _3_IncidentDescription extends Fragment implements View.OnClickList
         damagdescrinfo = ((TextView)ll.findViewById(R.id.damage_description_information));
         damagdescrinfo.setOnClickListener(this);
         spinner = ((Spinner)ll.findViewById(R.id.facilities_spinner));
+        title = (EditText)ll.findViewById(R.id.title);
         //spinner.setOnClickListener(this);
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(ll.getContext(), R.array.facilities, android.R.layout.simple_spinner_item);
@@ -87,9 +91,9 @@ public class _3_IncidentDescription extends Fragment implements View.OnClickList
     @Override
     public void onClick(View v) {
         Toast.makeText(this.ll.getContext(), "Das ist das 4. Fragment", Toast.LENGTH_SHORT).show();
-
+        //String title, String user, String description, String exactLocation, String location, String imagePath
         if(v.getResources().getResourceName(v.getId()).substring(30).contentEquals("id/descr_finished_button")){
-            IncidentRequest incident = new IncidentRequest(user, spinner.getSelectedItem().toString(), locdescrp.getText().toString(), damagdescrinfo.getText().toString());
+            IncidentRequest incident = new IncidentRequest(title.toString(), user, damagdescrinfo.getText().toString(), locdescrp.getText().toString(), spinner.getSelectedItem().toString(), imageFileName);
             Call<ResponseBody> call = Connection.getApiInterface().sendIncident(user, incident);
             call.enqueue(new Callback<ResponseBody>() {
                              @Override
@@ -97,8 +101,8 @@ public class _3_IncidentDescription extends Fragment implements View.OnClickList
                                  if (response.isSuccessful()) {
                                      // Do awesome stuff
                                      FragmentTransaction transaction = fragact.getSupportFragmentManager().beginTransaction();
-                                     _3b_IncidentPicture newFragment = new _3b_IncidentPicture();
-                                     newFragment.user = user;
+                                     _4_FinalScreen newFragment = new _4_FinalScreen();
+
                                      // Replace whatever is in the fragment_container view with this fragment,
                                      // and add the transaction to the back stack so the user can navigate back
                                      transaction.replace(R.id.fragment_container, newFragment);

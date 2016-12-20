@@ -40,13 +40,12 @@ import retrofit2.Response;
 import static android.content.ContentValues.TAG;
 import static android.view.View.GONE;
 
-public class _1_IncidentLogin extends Fragment implements View.OnClickListener{
+public class _1f_FacilityLogin extends Fragment implements View.OnClickListener{
     RelativeLayout ll = null;
     FragmentActivity fragact = null;
-    Button matlogin = null;
-    TextView matnr = null;
-    TextView matpassword = null;
+    TextView facpassword = null, facusername = null;
     ProgressBar progressbar = null;
+
     @Override
     public void onAttach(Activity activity) {
         fragact = (FragmentActivity)activity;
@@ -54,14 +53,14 @@ public class _1_IncidentLogin extends Fragment implements View.OnClickListener{
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, 
-        Bundle savedInstanceState) {
-        ll = (RelativeLayout) inflater.inflate(R.layout.incidentlogin, container, false);
-        progressbar = ((ProgressBar)ll.findViewById(R.id.incidentlogprogressBar));
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        ll = (RelativeLayout) inflater.inflate(R.layout.facilitylogin, container, false);
+        ((Button)ll.findViewById(R.id.fac_login)).setOnClickListener(this);
+        facpassword = ((TextView)ll.findViewById(R.id.fac_password));
+        facusername = ((TextView)ll.findViewById(R.id.fac_username));
+        progressbar = ((ProgressBar)ll.findViewById(R.id.facloginprogressBar));
         progressbar.setVisibility(GONE);
-        ((Button)ll.findViewById(R.id.matloginbutton)).setOnClickListener(this);
-        matnr = ((TextView)ll.findViewById(R.id.matnr));
-        matpassword = (TextView) ll.findViewById(R.id.matpassword);
         // Inflate the layout for this fragment
         return ll;
     }
@@ -78,12 +77,11 @@ public class _1_IncidentLogin extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-       Toast.makeText(this.ll.getContext(), "Das ist das zweite Fragment", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this.ll.getContext(), "Das ist das zweite Fragment b", Toast.LENGTH_SHORT).show();
         final View view = v;
-        if(v.getResources().getResourceName(v.getId()).substring(30).contentEquals("id/matloginbutton")){
-
+        if(v.getResources().getResourceName(v.getId()).substring(30).contentEquals("id/fac_login")){
             progressbar.setVisibility(View.VISIBLE);
-            Call<ResponseBody> call = Connection.getApiInterface().getLogin(matnr.getText().toString(), matpassword.getText().toString());
+            Call<ResponseBody> call = Connection.getApiInterface().getLogin(facusername.getText().toString(), facpassword.getText().toString());
             call.enqueue(new Callback<ResponseBody>() {
                 @Override
                 public void onResponse(Call<ResponseBody>call, Response<ResponseBody> response) {
@@ -91,8 +89,8 @@ public class _1_IncidentLogin extends Fragment implements View.OnClickListener{
                         // Do awesome stuff
                         Toast.makeText(ll.getContext(), view.getResources().getResourceName(view.getId()), Toast.LENGTH_SHORT).show();
                         FragmentTransaction transaction = fragact.getSupportFragmentManager().beginTransaction();
-                        _2_IncidentPicture newFragment = new _2_IncidentPicture();
-                        newFragment.user = matnr.getText().toString();
+                        _2f_FacilityView newFragment = new _2f_FacilityView();
+                        newFragment.username = facusername.getText().toString();
                         // Replace whatever is in the fragment_container view with this fragment,
                         // and add the transaction to the back stack so the user can navigate back
                         transaction.replace(R.id.fragment_container, newFragment);
@@ -111,7 +109,6 @@ public class _1_IncidentLogin extends Fragment implements View.OnClickListener{
 
                     }
                 }
-
                 @Override
                 public void onFailure(Call<ResponseBody>call, Throwable t) {
                     // Log error here since request failed
@@ -120,35 +117,16 @@ public class _1_IncidentLogin extends Fragment implements View.OnClickListener{
 
                 }
             });
-            //this.checkLoginData((String)matnr.getText(), (String)matpassword.getText());
+                //XYZ newFragment = new XYZ();
 
+            // Replace whatever is in the fragment_container view with this fragment,
+            // and add the transaction to the back stack so the user can navigate back
+            //transaction.replace(R.id.fragment_container, newFragment);
+            //transaction.addToBackStack(null);
+
+            // Commit the transaction
+            //transaction.commit();
         }
-
 
     }
-    /*
-    private boolean checkLoginData(String matnr, String matpassword){
-        if (API_KEY.isEmpty()) {
-            Toast.makeText(getContext(), "Please obtain your API KEY first from themoviedb.org", Toast.LENGTH_LONG).show();
-            return;
-        }
-
-        ApiInterface apiService =
-                ApiClient.getClient().create(ApiInterface.class);
-
-        Call<LoginRequest> call = apiService.);
-        call.enqueue(new Callback<LoginRequest>() {
-            @Override
-            public void onResponse(Call<LoginRequest> call, Response<LoginRequest> response) {
-                List<Incident> movies = response.body().getResults();
-                Log.d(TAG, "Number of movies received: " + movies.size());
-            }
-
-            @Override
-            public void onFailure(Call<MoviesResponse>call, Throwable t) {
-                // Log error here since request failed
-                Log.e(TAG, t.toString());
-            }
-        });
-    }*/
 }

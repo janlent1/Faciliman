@@ -36,7 +36,7 @@ limitations under the License.
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="Username"
+        android:text="jlong"
         android:ems="10"
         android:layout_below="@+id/facility_man_login"
         android:layout_centerHorizontal="true"
@@ -47,7 +47,7 @@ limitations under the License.
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
-        android:text="Username"
+        android:text="password"
         android:ems="10"
         android:layout_below="@+id/fac_username"
         android:layout_alignLeft="@+id/fac_username"
@@ -62,5 +62,13 @@ limitations under the License.
         android:layout_centerHorizontal="true"
         android:layout_marginTop="37dp"
         android:id="@+id/fac_login" />
+    <ProgressBar
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/facloginprogressBar"
 
+        />
 </RelativeLayout>

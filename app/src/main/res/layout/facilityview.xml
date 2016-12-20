@@ -15,43 +15,20 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/content_main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:id="@+id/content_main"
+    >
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:textSize="18sp"
-        android:text="Bitte laden Sie noch ein Bild hoch"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-    <ImageView
-        android:id="@+id/Imageprev"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/incidents_recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:layout_below="@+id/title" />
+        android:layout_height="match_parent"
+        android:scrollbars="vertical">
+    </android.support.v7.widget.RecyclerView>
 
-    <Button
-        android:text="Senden"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/send_button"
-        android:layout_toRightOf="@+id/select_pic"
-        android:layout_toEndOf="@+id/select_pic"
-        android:layout_below="@+id/Imageprev" />
-
-    <Button
-        android:text="Bild Auswählen"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/select_pic"
-        android:layout_below="@+id/Imageprev"
-        android:layout_alignLeft="@+id/title"
-        android:layout_alignStart="@+id/title" />
 
 </RelativeLayout>

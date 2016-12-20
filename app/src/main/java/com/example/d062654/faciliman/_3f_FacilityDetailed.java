@@ -16,6 +16,7 @@
 package com.example.d062654.faciliman;
 
 import android.app.Activity;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -23,14 +24,34 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class _2b_FacilityView extends Fragment implements View.OnClickListener{
+import com.example.d062654.faciliman.Connection.Connection;
+import com.example.d062654.faciliman.Requests.IncidentRequest;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class _3f_FacilityDetailed extends Fragment implements View.OnClickListener{
     RelativeLayout ll = null;
     FragmentActivity fragact = null;
+    String user = null;
+    IncidentRequest incident = null;
+    Button    facarchive = null;
+    TextView    facplace = null;
+    TextView    facdetailed_location = null;
+    TextView    facdetailed_description = null;
+    TextView    factitle = null;
+    ImageView    facimage = null;
+
     @Override
     public void onAttach(Activity activity) {
         fragact = (FragmentActivity)activity;
@@ -40,8 +61,20 @@ public class _2b_FacilityView extends Fragment implements View.OnClickListener{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        ll = (RelativeLayout) inflater.inflate(R.layout.facilitylogin, container, false);
+        ll = (RelativeLayout) inflater.inflate(R.layout.facilitydetailed, container, false);
+        facarchive =(Button)ll.findViewById(R.id.facarchive);
 
+        //factitle   =(TextView)ll.findViewById(R.id.factitle);
+        //factitle.setText(incident.);
+        facplace   =(TextView)ll.findViewById(R.id.facplace);
+        facplace.setText(incident.getLocation());
+        facdetailed_location = (TextView)ll.findViewById(R.id.facdetailed_location);
+        facdetailed_location.setText(incident.getExactLocation());
+        facdetailed_description = (TextView)ll.findViewById(R.id.facdetailed_description);
+        facdetailed_description.setText(incident.getDescription());
+        //facimage   =(ImageView)ll.findViewById(R.id.facimage);
+
+        // Inflate the layout for this fragment
         return ll;
     }
 
@@ -57,20 +90,9 @@ public class _2b_FacilityView extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-        Toast.makeText(this.ll.getContext(), "Das ist das zweite Fragment b", Toast.LENGTH_SHORT).show();
 
-        if(v.getResources().getResourceName(v.getId()).substring(30).contentEquals("id/fac_login")){
-            FragmentTransaction transaction = fragact.getSupportFragmentManager().beginTransaction();
-            //_2_IncidentSelection newFragment = new _2_IncidentSelection();
 
-            // Replace whatever is in the fragment_container view with this fragment,
-            // and add the transaction to the back stack so the user can navigate back
-            //transaction.replace(R.id.fragment_container, newFragment);
-            //transaction.addToBackStack(null);
 
-            // Commit the transaction
-            //transaction.commit();
-        }
 
     }
 }
