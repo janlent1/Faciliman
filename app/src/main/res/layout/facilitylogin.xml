@@ -36,23 +36,12 @@ limitations under the License.
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="jlong"
+        android:hint="Benutzerkennung"
         android:ems="10"
         android:layout_below="@+id/facility_man_login"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="47dp"
         android:id="@+id/fac_username" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:text="password"
-        android:ems="10"
-        android:layout_below="@+id/fac_username"
-        android:layout_alignLeft="@+id/fac_username"
-        android:layout_marginTop="69dp"
-        android:id="@+id/fac_password" />
 
     <Button
         android:text="Login"
@@ -71,4 +60,16 @@ limitations under the License.
         android:id="@+id/facloginprogressBar"
 
         />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:hint="Passwort"
+        android:ems="10"
+        android:layout_marginTop="17dp"
+        android:id="@+id/fac_password"
+        android:layout_below="@+id/facloginprogressBar"
+        android:layout_alignLeft="@+id/fac_username"
+        android:layout_alignStart="@+id/fac_username" />
 </RelativeLayout>

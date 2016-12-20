@@ -93,7 +93,8 @@ public class _3_IncidentDescription extends Fragment implements View.OnClickList
         Toast.makeText(this.ll.getContext(), "Das ist das 4. Fragment", Toast.LENGTH_SHORT).show();
         //String title, String user, String description, String exactLocation, String location, String imagePath
         if(v.getResources().getResourceName(v.getId()).substring(30).contentEquals("id/descr_finished_button")){
-            IncidentRequest incident = new IncidentRequest(title.toString(), user, damagdescrinfo.getText().toString(), locdescrp.getText().toString(), spinner.getSelectedItem().toString(), imageFileName);
+            System.out.println(imageFileName);
+            IncidentRequest incident = new IncidentRequest(title.getText().toString(), user, damagdescrinfo.getText().toString(), locdescrp.getText().toString(), spinner.getSelectedItem().toString(), imageFileName);
             Call<ResponseBody> call = Connection.getApiInterface().sendIncident(user, incident);
             call.enqueue(new Callback<ResponseBody>() {
                              @Override

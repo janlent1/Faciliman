@@ -7,6 +7,7 @@ import com.example.d062654.faciliman.Requests.IncidentColl;
 import com.example.d062654.faciliman.Requests.IncidentRequest;
 import com.example.d062654.faciliman.Requests.LoginRequest;
 
+import java.io.File;
 import java.util.List;
 
 import okhttp3.MultipartBody;
@@ -33,6 +34,12 @@ public interface ApiInterface {
 
     @GET("/incident/{username}/all")
     Call<List<IncidentRequest>> getIncidents(@Path("username") String username);
+
+    @GET("/incident/{username}/{incidentId}/file")
+    Call<ResponseBody> getFile(@Path("username") String username, @Path("incidentId") Long incidentid);
+
+    @POST("incident/{username}/archieve/{incidentId}")
+    Call<ResponseBody> archieveIncident(@Path("username") String username, @Path("incidentId") Long incidentid);
 
     @POST("incident/{username}")
     Call<ResponseBody> sendIncident(@Path("username") String username, @Body IncidentRequest input);

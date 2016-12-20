@@ -33,7 +33,7 @@ limitations under the License.
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
-        android:text="Passwort"
+        android:hint="Passwort eingeben"
         android:ems="10"
         android:id="@+id/matpassword"
         android:layout_centerVertical="true"
@@ -42,10 +42,10 @@ limitations under the License.
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="text"
+        android:inputType="number"
         android:ems="10"
         android:id="@+id/matnr"
-        android:text="Matrikelnr."
+        android:hint="Matrikelnummer eingeben"
         android:layout_above="@+id/matpassword"
         android:layout_alignLeft="@+id/matpassword"
         android:layout_alignStart="@+id/matpassword" />

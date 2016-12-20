@@ -111,7 +111,7 @@ public class _2_IncidentPicture extends Fragment implements View.OnClickListener
                 ".jpg",         /* suffix */
                 storageDir      /* directory */
         );
-
+        System.out.println(imageFileName);
         // Save a file: path for use with ACTION_VIEW intents
         mCurrentPhotoPath = image.getAbsolutePath();
 
@@ -342,7 +342,8 @@ public class _2_IncidentPicture extends Fragment implements View.OnClickListener
     public void uploadPhoto(){
         RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), photoFile);
         // MultipartBody.Part is used to send also the actual filename
-        MultipartBody.Part body = MultipartBody.Part.createFormData("file", photoFile.getName(), requestFile);
+        //MultipartBody.Part body = MultipartBody.Part.createFormData("file", photoFile.getName(), requestFile);
+        MultipartBody.Part body = MultipartBody.Part.createFormData("file", imageFileName+".jpg", requestFile);
         // adds another part within the multipart request
         String descriptionString = "Sample description";
         RequestBody description = RequestBody.create(MediaType.parse("multipart/form-data"), descriptionString);
@@ -387,7 +388,7 @@ public class _2_IncidentPicture extends Fragment implements View.OnClickListener
             FragmentTransaction transaction = fragact.getSupportFragmentManager().beginTransaction();
             _3_IncidentDescription newFragment = new _3_IncidentDescription();
             newFragment.user = user;
-            newFragment.imageFileName= imageFileName;
+            newFragment.imageFileName= imageFileName+".jpg";
 
             // Replace whatever is in the fragment_container view with this fragment,
             // and add the transaction to the back stack so the user can navigate back

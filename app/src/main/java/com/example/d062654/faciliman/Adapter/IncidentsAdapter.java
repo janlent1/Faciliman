@@ -32,19 +32,19 @@ private Context context;
     }
 
     public static class IncidentsViewHolder extends RecyclerView.ViewHolder{
-    LinearLayout moviesLayout;
-    TextView movieTitle;
-    TextView data;
-    TextView movieDescription;
+    LinearLayout incidentLayout;
+    TextView facTitle;
+    TextView facLocation;
+    TextView incidentDescription;
     TextView rating;
 
 
     public IncidentsViewHolder(View v) {
         super(v);
-        moviesLayout = (LinearLayout) v.findViewById(R.id.movies_layout);
-        movieTitle = (TextView) v.findViewById(R.id.title);
-        data = (TextView) v.findViewById(R.id.subtitle);
-        movieDescription = (TextView) v.findViewById(R.id.description);
+        incidentLayout = (LinearLayout) v.findViewById(R.id.incident_layout);
+        facTitle = (TextView) v.findViewById(R.id.factitle);
+        facLocation = (TextView) v.findViewById(R.id.faclocation);
+        incidentDescription = (TextView) v.findViewById(R.id.description);
         rating = (TextView) v.findViewById(R.id.rating);
     }
 
@@ -73,9 +73,9 @@ private Context context;
 
     @Override
     public void onBindViewHolder(IncidentsViewHolder holder, final int position) {
-        holder.movieTitle.setText(incidents.get(position).getLocation());
-        holder.data.setText(incidents.get(position).getExactLocation());
-        holder.movieDescription.setText(incidents.get(position).getDescription());
+        holder.facTitle.setText(incidents.get(position).getTitle());
+        holder.facLocation.setText(incidents.get(position).getLocation());
+        holder.incidentDescription.setText(incidents.get(position).getDescription());
         holder.rating.setText((String.valueOf(incidents.get(position).isActive())));
     }
 

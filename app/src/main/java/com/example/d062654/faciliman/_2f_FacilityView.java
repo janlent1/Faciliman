@@ -86,6 +86,7 @@ public class _2f_FacilityView extends Fragment implements View.OnClickListener{
                                 FragmentTransaction transaction = fragact.getSupportFragmentManager().beginTransaction();
                                 _3f_FacilityDetailed newFragment = new _3f_FacilityDetailed();
                                 newFragment.incident = incidents.get(position);
+                                newFragment.user = username;
                                 // Replace whatever is in the fragment_container view with this fragment,
                                 // and add the transaction to the back stack so the user can navigate back
                                 transaction.replace(R.id.fragment_container, newFragment);

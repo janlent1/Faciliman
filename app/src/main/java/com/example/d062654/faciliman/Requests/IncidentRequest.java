@@ -25,7 +25,7 @@ public class IncidentRequest {
     @SerializedName("active")
     private boolean active;
     @SerializedName("id")
-    private int id;
+    private Long id;
 
     public IncidentRequest(String title, String user, String description, String exactLocation, String location, String imagePath) {
         this.imagePath = imagePath;
@@ -65,11 +65,11 @@ public class IncidentRequest {
     public IncidentRequest() {
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public String getUser() {
