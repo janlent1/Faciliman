@@ -89,7 +89,6 @@ public class _1_IncidentLogin extends Fragment implements View.OnClickListener{
                 public void onResponse(Call<ResponseBody>call, Response<ResponseBody> response) {
                     if (response.isSuccessful()) {
                         // Do awesome stuff
-                        Toast.makeText(ll.getContext(), view.getResources().getResourceName(view.getId()), Toast.LENGTH_SHORT).show();
                         FragmentTransaction transaction = fragact.getSupportFragmentManager().beginTransaction();
                         _2_IncidentPicture newFragment = new _2_IncidentPicture();
                         newFragment.user = matnr.getText().toString();
@@ -120,35 +119,9 @@ public class _1_IncidentLogin extends Fragment implements View.OnClickListener{
 
                 }
             });
-            //this.checkLoginData((String)matnr.getText(), (String)matpassword.getText());
-
         }
 
 
     }
-    /*
-    private boolean checkLoginData(String matnr, String matpassword){
-        if (API_KEY.isEmpty()) {
-            Toast.makeText(getContext(), "Please obtain your API KEY first from themoviedb.org", Toast.LENGTH_LONG).show();
-            return;
-        }
 
-        ApiInterface apiService =
-                ApiClient.getClient().create(ApiInterface.class);
-
-        Call<LoginRequest> call = apiService.);
-        call.enqueue(new Callback<LoginRequest>() {
-            @Override
-            public void onResponse(Call<LoginRequest> call, Response<LoginRequest> response) {
-                List<Incident> movies = response.body().getResults();
-                Log.d(TAG, "Number of movies received: " + movies.size());
-            }
-
-            @Override
-            public void onFailure(Call<MoviesResponse>call, Throwable t) {
-                // Log error here since request failed
-                Log.e(TAG, t.toString());
-            }
-        });
-    }*/
 }

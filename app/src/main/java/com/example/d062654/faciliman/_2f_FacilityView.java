@@ -56,17 +56,12 @@ public class _2f_FacilityView extends Fragment implements View.OnClickListener{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         ll = (RelativeLayout) inflater.inflate(R.layout.facilityview, container, false);
-        //fragact.setContentView(R.layout.facilityview);
-        /*TextView lbl = new TextView(ll.getContext());
-        lbl.setText("hallo");
-        ll.addView(lbl);*/
+
 
         final RecyclerView recyclerView = (RecyclerView) new RecyclerView(ll.getContext()); //ll.findViewById(R.id.incidents_recycler_view);
-        //final IncidentsAdapter adapter = new IncidentsAdapter(R.layout.facilityview, ll.getContext());
 
         recyclerView.setLayoutManager(new LinearLayoutManager(ll.getContext()));
 
-        //recyclerView.setAdapter(adapter);
         Call<List<IncidentRequest>> call = Connection.getApiInterface().getIncidents(username);
         call.enqueue(new Callback<List<IncidentRequest>>() {
             @Override
@@ -82,7 +77,6 @@ public class _2f_FacilityView extends Fragment implements View.OnClickListener{
                         new RecyclerItemClickListener(ll.getContext(), recyclerView , new RecyclerItemClickListener.OnItemClickListener() {
                             @Override public void onItemClick(View view, int position) {
                                 // do whatever
-                                System.out.println("Hallo");
                                 FragmentTransaction transaction = fragact.getSupportFragmentManager().beginTransaction();
                                 _3f_FacilityDetailed newFragment = new _3f_FacilityDetailed();
                                 newFragment.incident = incidents.get(position);
@@ -137,16 +131,7 @@ public class _2f_FacilityView extends Fragment implements View.OnClickListener{
         Toast.makeText(this.ll.getContext(), "Das ist das zweite Fragment b", Toast.LENGTH_SHORT).show();
 
         if(v.getResources().getResourceName(v.getId()).substring(30).contentEquals("id/fac_login")){
-            //FragmentTransaction transaction = fragact.getSupportFragmentManager().beginTransaction();
-            //XYZ newFragment = new XYZ();
 
-            // Replace whatever is in the fragment_container view with this fragment,
-            // and add the transaction to the back stack so the user can navigate back
-            //transaction.replace(R.id.fragment_container, newFragment);
-            //transaction.addToBackStack(null);
-
-            // Commit the transaction
-            //transaction.commit();
         }
 
     }

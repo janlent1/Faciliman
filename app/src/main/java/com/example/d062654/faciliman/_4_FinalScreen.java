@@ -37,7 +37,6 @@ public class _4_FinalScreen extends Fragment implements View.OnClickListener{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, 
         Bundle savedInstanceState) {
         ll = (RelativeLayout) inflater.inflate(R.layout.finalscreen, container, false);
-        //3((Button)ll.findViewById(R.id.loginbutton)).setOnClickListener(this);
 
         // Inflate the layout for this fragment
         return ll;
@@ -54,23 +53,5 @@ public class _4_FinalScreen extends Fragment implements View.OnClickListener{
     }
 
     @Override
-    public void onClick(View v) {
-      /* Toast.makeText(this.ll.getContext(), "Das ist das zweite Fragment", Toast.LENGTH_SHORT).show();
-
-        if(v.getResources().getResourceName(v.getId()).substring(30).contentEquals("id/loginbutton")){
-            Toast.makeText(this.ll.getContext(), v.getResources().getResourceName(v.getId()), Toast.LENGTH_SHORT).show();
-            FragmentTransaction transaction = fragact.getSupportFragmentManager().beginTransaction();
-            _4_FinalScreen newFragment = new _4_FinalScreen();
-
-            // Replace whatever is in the fragment_container view with this fragment,
-            // and add the transaction to the back stack so the user can navigate back
-            transaction.replace(R.id.fragment_container, newFragment);
-            transaction.addToBackStack(null);
-
-            // Commit the transaction
-            transaction.commit();
-        }
-    */
-
-    }
+    public void onClick(View v) {}
 }

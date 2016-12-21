@@ -87,7 +87,7 @@ public class _3f_FacilityDetailed extends Fragment implements View.OnClickListen
         facdetailed_location = (TextView)ll.findViewById(R.id.facdetailed_location);
         facdetailed_location.setText(incident.getExactLocation());
         facdetailed_description = (TextView)ll.findViewById(R.id.facdetailed_description);
-        facdetailed_description.setText(incident.getDescription());
+        facdetailed_description.setText("Lampe Kaputt");
         facimage   =(ImageView)ll.findViewById(R.id.facimage);
         facarchive.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -133,7 +133,7 @@ public class _3f_FacilityDetailed extends Fragment implements View.OnClickListen
                     Bitmap bmp = null;
 
                     try {
-                        byte[] imgbytes = response.body().bytes(); // = Base64.decode(response.body().bytes(), Base64.DEFAULT);
+                        byte[] imgbytes = response.body().bytes();
                         int targetW = facimage.getWidth();
                         int targetH = facimage.getHeight();
                         // bimatp factory
@@ -155,8 +155,6 @@ public class _3f_FacilityDetailed extends Fragment implements View.OnClickListen
                     }
                     ImageView image = (ImageView) ll.findViewById(R.id.facimage);
 
-
-                    //Bitmap bitmap = BitmapFactory.decodeFile(photoURI.toString(), options);
                     Matrix matrix = new Matrix();
 
                     matrix.postRotate(90);
@@ -165,28 +163,7 @@ public class _3f_FacilityDetailed extends Fragment implements View.OnClickListen
 
                     Bitmap rotatedBitmap = Bitmap.createBitmap(scaledBitmap , 0, 0, scaledBitmap .getWidth(), scaledBitmap .getHeight(), matrix, true);
                     facimage.setImageBitmap(rotatedBitmap);
-                    //image.setImageBitmap(bmp);
-                    /*try {
-                        InputStream is;
-                        is = response.body()..byteStream();
-                        FileOutputStream fos = new FileOutputStream(new File(Environment.getExternalStorageDirectory(), "test.jpg"));
-                        int read = 0;
-                        byte[] buffer = new byte[32768];
-                        while( (read = is.read(buffer)) > 0) {
-                            fos.write(buffer, 0, read);
-                        }
 
-                        fos.close();
-                        is.close();
-
-                    }
-                    catch(Exception e){}
-                    /*Uri photoURI = FileProvider.getUriForFile(ll.getContext(),
-                            "com.d062654.fileprovider",
-                            response.body().);
-                    facimage.setVisibility(View.VISIBLE);
-
-*/
 
                 } else if (response.code() == 401) {
                     // Handle unauthorized
@@ -223,10 +200,5 @@ public class _3f_FacilityDetailed extends Fragment implements View.OnClickListen
     }
 
     @Override
-    public void onClick(View v) {
-
-
-
-
-    }
+    public void onClick(View v) {}
 }

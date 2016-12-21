@@ -59,9 +59,6 @@ public class _1f_FacilityLogin extends Fragment implements View.OnClickListener{
         ((Button)ll.findViewById(R.id.fac_login)).setOnClickListener(this);
         facpassword = ((TextView)ll.findViewById(R.id.fac_password));
         facusername = ((TextView)ll.findViewById(R.id.fac_username));
-        progressbar = ((ProgressBar)ll.findViewById(R.id.facloginprogressBar));
-        progressbar.setVisibility(GONE);
-        // Inflate the layout for this fragment
         return ll;
     }
 
@@ -77,10 +74,8 @@ public class _1f_FacilityLogin extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-        Toast.makeText(this.ll.getContext(), "Das ist das zweite Fragment b", Toast.LENGTH_SHORT).show();
         final View view = v;
         if(v.getResources().getResourceName(v.getId()).substring(30).contentEquals("id/fac_login")){
-            progressbar.setVisibility(View.VISIBLE);
             Call<ResponseBody> call = Connection.getApiInterface().getLogin(facusername.getText().toString(), facpassword.getText().toString());
             call.enqueue(new Callback<ResponseBody>() {
                 @Override
@@ -95,17 +90,14 @@ public class _1f_FacilityLogin extends Fragment implements View.OnClickListener{
                         // and add the transaction to the back stack so the user can navigate back
                         transaction.replace(R.id.fragment_container, newFragment);
                         transaction.addToBackStack(null);
-                        progressbar.setVisibility(GONE);
 
                         // Commit the transaction
                         transaction.commit();
                     } else if (response.code() == 401) {
                         // Handle unauthorized
-                        progressbar.setVisibility(GONE);
 
                     } else {
                         // Handle other responses
-                        progressbar.setVisibility(GONE);
 
                     }
                 }
@@ -113,11 +105,10 @@ public class _1f_FacilityLogin extends Fragment implements View.OnClickListener{
                 public void onFailure(Call<ResponseBody>call, Throwable t) {
                     // Log error here since request failed
                     Log.e(TAG, t.toString());
-                    progressbar.setVisibility(GONE);
 
                 }
             });
-                //XYZ newFragment = new XYZ();
+
 
             // Replace whatever is in the fragment_container view with this fragment,
             // and add the transaction to the back stack so the user can navigate back

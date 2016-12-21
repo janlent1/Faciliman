@@ -77,15 +77,10 @@ import static com.example.d062654.faciliman.R.attr.height;
 public class _2_IncidentPicture extends Fragment implements View.OnClickListener{
     RelativeLayout ll = null;
     FragmentActivity fragact = null;
-    private static final int CAMERA_CAPTURE_IMAGE_REQUEST_CODE = 100;
-    public static final int MEDIA_TYPE_IMAGE = 1;
     public static final int MY_PERMISSIONS_REQUEST_CAMERA = 1;
     public static final int MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE = 2;
-    public static final int ASK_MULTIPLE_PERMISSION_REQUEST_CODE = 3;
-    // directory name to store captured images and videos
-    private static final String IMAGE_DIRECTORY_NAME = "Hello Camera";
+
     Button sendbutton = null;
-    TextView locdescrp, damagdescrinfo = null;
     private Uri fileUri; // file url to store image/video
     private Uri mCameraTempUri;
     private ImageView imgPreview;
@@ -134,16 +129,7 @@ public class _2_IncidentPicture extends Fragment implements View.OnClickListener
         // changes
         outState.putParcelable("file_uri", fileUri);
     }
-    /*
-     * Here we restore the fileUri again
-     */
-    /*@Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
 
-        // get the file url
-        fileUri = savedInstanceState.getParcelable("file_uri");
-    }*/
     /*
      * Display image from a path to ImageView
      */
@@ -173,10 +159,6 @@ public class _2_IncidentPicture extends Fragment implements View.OnClickListener
 
             Bitmap rotatedBitmap = Bitmap.createBitmap(scaledBitmap , 0, 0, scaledBitmap .getWidth(), scaledBitmap .getHeight(), matrix, true);
             imgPreview.setImageBitmap(rotatedBitmap);
-            
-            //final Bitmap bitmap = (Bitmap) extras.get("data");;
-            //System.out.println("***"+ mCameraTempUri);
-            //imgPreview.setImageBitmap(bitmap);
 
         } catch (NullPointerException e) {
             e.printStackTrace();
@@ -231,20 +213,7 @@ public class _2_IncidentPicture extends Fragment implements View.OnClickListener
                 startActivityForResult(intent, REQUEST_TAKE_PHOTO);
             }
         }
-        //fileUri = getOutputMediaFileUri(MEDIA_TYPE_IMAGE);
-        /*ContentValues values = new ContentValues(1);
-        values.put(MediaStore.Images.Media.MIME_TYPE, "image/jpg");
-        mCameraTempUri = getActivity().getContentResolver()
-                .insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
-        System.out.println("###"+mCameraTempUri);
 
-
-        intent.putExtra(MediaStore.EXTRA_OUTPUT, mCameraTempUri);
-        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION
-                | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
-        */
-        // start the image capture Intent
-        //startActivityForResult(intent, CAMERA_CAPTURE_IMAGE_REQUEST_CODE);
     }
     @Override
     public void onRequestPermissionsResult(int requestCode,
@@ -341,14 +310,12 @@ public class _2_IncidentPicture extends Fragment implements View.OnClickListener
 
     public void uploadPhoto(){
         RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), photoFile);
-        // MultipartBody.Part is used to send also the actual filename
-        //MultipartBody.Part body = MultipartBody.Part.createFormData("file", photoFile.getName(), requestFile);
         MultipartBody.Part body = MultipartBody.Part.createFormData("file", imageFileName+".jpg", requestFile);
         // adds another part within the multipart request
         String descriptionString = "Sample description";
         RequestBody description = RequestBody.create(MediaType.parse("multipart/form-data"), descriptionString);
 
-// executes the request
+        // executes the request
         Call<ResponseBody> call = Connection.getApiInterface().uploadPicture(user, body, description);
         call.enqueue(new Callback<ResponseBody>() {
             @Override

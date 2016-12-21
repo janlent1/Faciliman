@@ -66,7 +66,6 @@ public class _3_IncidentDescription extends Fragment implements View.OnClickList
         damagdescrinfo.setOnClickListener(this);
         spinner = ((Spinner)ll.findViewById(R.id.facilities_spinner));
         title = (EditText)ll.findViewById(R.id.title);
-        //spinner.setOnClickListener(this);
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(ll.getContext(), R.array.facilities, android.R.layout.simple_spinner_item);
         // Specify the layout to use when the list of choices appears
@@ -90,8 +89,6 @@ public class _3_IncidentDescription extends Fragment implements View.OnClickList
 
     @Override
     public void onClick(View v) {
-        Toast.makeText(this.ll.getContext(), "Das ist das 4. Fragment", Toast.LENGTH_SHORT).show();
-        //String title, String user, String description, String exactLocation, String location, String imagePath
         if(v.getResources().getResourceName(v.getId()).substring(30).contentEquals("id/descr_finished_button")){
             System.out.println(imageFileName);
             IncidentRequest incident = new IncidentRequest(title.getText().toString(), user, damagdescrinfo.getText().toString(), locdescrp.getText().toString(), spinner.getSelectedItem().toString(), imageFileName);

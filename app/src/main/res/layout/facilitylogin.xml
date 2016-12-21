@@ -21,45 +21,35 @@ limitations under the License.
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/facility_man_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:textSize="18sp"
-        android:text="Facility Managment Login"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="112dp" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:hint="Benutzerkennung"
-        android:ems="10"
-        android:layout_below="@+id/facility_man_login"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="47dp"
-        android:id="@+id/fac_username" />
-
-    <Button
-        android:text="Login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/fac_password"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="37dp"
-        android:id="@+id/fac_login" />
-    <ProgressBar
+    <!--ProgressBar
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:id="@+id/facloginprogressBar"
+        /-->
 
-        />
+    <Button
+        android:text="Login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/fac_login"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="28dp" />
+
+    <TextView
+        android:id="@+id/facility_man_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:textSize="18sp"
+        android:layout_below="@+id/fac_username"
+        android:text="Facility Managment Login"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="81dp" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -67,9 +57,21 @@ limitations under the License.
         android:inputType="textPassword"
         android:hint="Passwort"
         android:ems="10"
-        android:layout_marginTop="17dp"
         android:id="@+id/fac_password"
-        android:layout_below="@+id/facloginprogressBar"
-        android:layout_alignLeft="@+id/fac_username"
-        android:layout_alignStart="@+id/fac_username" />
+        android:layout_above="@+id/fac_login"
+        android:layout_alignRight="@+id/facility_man_login"
+        android:layout_alignEnd="@+id/facility_man_login"
+        android:layout_marginBottom="117dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="Benutzerkennung"
+        android:ems="10"
+        android:id="@+id/fac_username"
+        android:layout_above="@+id/fac_password"
+        android:layout_alignRight="@+id/facility_man_login"
+        android:layout_alignEnd="@+id/facility_man_login"
+        android:layout_marginBottom="53dp" />
 </RelativeLayout>
